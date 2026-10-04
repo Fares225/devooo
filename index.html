@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DEVORA</title>
+  <meta name="description"
+    content="شركة DEVORA للبرمجيات والحلول الرقمية - تطوير مواقع وتطبيقات الهواتف والأنظمة السحابية والذكاء الاصطناعي بأعلى معايير الجودة والأداء.">
+  <meta name="theme-color" content="#070a15">
+
+  <!-- Google Fonts: Cairo (Arabic) & Outfit (Latin) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Tab Favicon (DEVORA Image) -->
+  <link rel="icon" type="image/jpeg" href="assets/devora-banner.jpg">
+  <link rel="shortcut icon" type="image/jpeg" href="assets/devora-banner.jpg">
+  <link rel="apple-touch-icon" href="assets/devora-banner.jpg">
+</head>
+
+<body>
+  <!-- Ambient Background Canvas & Glow Elements -->
+  <canvas id="circuit-canvas" aria-hidden="true"></canvas>
+  <div class="ambient-glow glow-cyan" aria-hidden="true"></div>
+  <div class="ambient-glow glow-purple" aria-hidden="true"></div>
+
+  <!-- Header / Navigation Bar -->
+  <header class="site-header" id="header">
+    <div class="header-container">
+      <!-- DEVORA Brand Logo -->
+      <a href="#hero" class="brand-logo" id="brand-logo" aria-label="DEVORA Home">
+        <div class="logo-gem">
+          <svg viewBox="0 0 48 48" class="logo-svg" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="12,6 30,6 40,24 30,42 12,42 6,24" stroke="url(#cyan-violet-grad)" stroke-width="2.5"
+              fill="rgba(16, 24, 48, 0.8)" />
+            <path d="M16 16 H24 C28.5 16 32 19.5 32 24 C32 28.5 28.5 32 24 32 H16 Z" fill="none"
+              stroke="url(#silver-grad)" stroke-width="2" />
+            <text x="23" y="27" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="700" fill="#00f0ff"
+              text-anchor="middle">&lt;/&gt;</text>
+            <defs>
+              <linearGradient id="cyan-violet-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#00f0ff" />
+                <stop offset="100%" stop-color="#8b5cf6" />
+              </linearGradient>
+              <linearGradient id="silver-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ffffff" />
+                <stop offset="100%" stop-color="#94a3b8" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">DEVORA</span>
+          <span class="brand-tagline" data-i18n="nav.tagline">SOFTWARE HOUSE</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-menu" id="nav-menu" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li><a href="#hero" class="nav-link active" data-i18n="nav.home">الرئيسية</a></li>
+          <li><a href="#services" class="nav-link" data-i18n="nav.services">خدماتنا</a></li>
+          <li><a href="#team" class="nav-link" data-i18n="nav.team">فريق العمل</a></li>
+          <li><a href="#social" class="nav-link" data-i18n="nav.social">السوشيال ميديا</a></li>
+          <li><a href="#contact" class="nav-link" data-i18n="nav.contact">تواصل معنا</a></li>
+        </ul>
+      </nav>
+
+      <!-- Nav Actions (Socials, Language & CTA) -->
+      <div class="nav-actions">
+        <!-- Social Icons: Instagram & TikTok Only -->
+        <div class="nav-social-icons">
+          <a href="https://www.instagram.com/devoraa0?stkn=MWt5OW5hZ21jM3M5NA==" target="_blank"
+            rel="noopener noreferrer" class="social-icon-btn icon-instagram" title="Instagram - @devoraa0"
+            aria-label="Instagram">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="https://www.tiktok.com/@devora_063?_r=1&amp;_t=ZS-9ADsvjYCFhE" target="_blank"
+            rel="noopener noreferrer" class="social-icon-btn icon-tiktok" title="TikTok - @devora_063"
+            aria-label="TikTok">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <path
+                d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-1.01-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Language Switcher -->
+        <button id="lang-toggle-btn" class="lang-btn" aria-label="تبديل اللغة - Toggle Language">
+          <span class="lang-icon">🌐</span>
+          <span class="lang-text" id="lang-label">EN</span>
+        </button>
+
+        <!-- CTA Button -->
+        <a href="#contact" class="btn-primary cta-btn" data-i18n="nav.cta">ابدأ مشروعك</a>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobile-toggle-btn" class="mobile-toggle" aria-label="القائمة" aria-expanded="false">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+    <div class="mobile-drawer-content">
+      <ul class="mobile-nav-list">
+        <li><a href="#hero" class="mobile-nav-link" data-i18n="nav.home">الرئيسية</a></li>
+        <li><a href="#services" class="mobile-nav-link" data-i18n="nav.services">خدماتنا</a></li>
+        <li><a href="#team" class="mobile-nav-link" data-i18n="nav.team">فريق العمل</a></li>
+        <li><a href="#social" class="mobile-nav-link" data-i18n="nav.social">السوشيال ميديا</a></li>
+        <li><a href="#contact" class="mobile-nav-link" data-i18n="nav.contact">تواصل معنا</a></li>
+      </ul>
+      <div class="mobile-drawer-socials">
+        <a href="https://www.instagram.com/devoraa0?stkn=MWt5OW5hZ21jM3M5NA==" target="_blank" rel="noopener noreferrer"
+          class="drawer-social-link">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+          <span>Instagram</span>
+        </a>
+        <a href="https://www.tiktok.com/@devora_063?_r=1&amp;_t=ZS-9ADsvjYCFhE" target="_blank"
+          rel="noopener noreferrer" class="drawer-social-link">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path
+              d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-1.01-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+          </svg>
+          <span>TikTok</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-container">
+        <!-- Left / Content Side -->
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            <span class="badge-text" data-i18n="hero.badge">استوديو برمجيات متقدم • حلول رقمية مبتكرة</span>
+          </div>
+
+          <h1 class="hero-title" data-i18n="hero.title">
+            نبتكر البرمجيات التي تصنع <span class="gradient-text">مستقبل أعمالك</span>
+          </h1>
+
+          <p class="hero-desc" data-i18n="hero.desc">
+            في <strong>DEVORA</strong> ندمج هندسة الكود الدقيقة مع أرقى التصاميم التفاعلية. نبني مواقع وتطبيقات وأنظمة
+            سحابية فائقة السرعة، مصممة خصيصاً لتمنحك الأفضلية التنافسية.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#contact" class="btn-primary" data-i18n="hero.ctaPrimary">ابدأ مشروعك معنا</a>
+            <a href="#services" class="btn-secondary" data-i18n="hero.ctaSecondary">استكشف خدماتنا</a>
+          </div>
+
+          <!-- Feature Highlights / Mini stats -->
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">100%</span>
+              <span class="stat-label" data-i18n="hero.stat1">كود نظيف وآمن</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number">99.9%</span>
+              <span class="stat-label" data-i18n="hero.stat2">كفاءة وأداء سريع</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number">24/7</span>
+              <span class="stat-label" data-i18n="hero.stat3">دعم فني وتطوير</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right / Visual Showcase matching the user's image -->
+        <div class="hero-visual">
+          <div class="hero-image-wrapper">
+            <!-- Glow Border and circuit accents -->
+            <div class="image-glow-border"></div>
+            <img src="assets/devora-banner.jpg" alt="DEVORA Software House" class="hero-main-img" id="hero-banner-img">
+
+            <!-- Floating interactive tech badges -->
+            <div class="floating-tech-card float-card-1">
+              <div class="tech-icon-circle">&lt;/&gt;</div>
+              <div class="tech-text">
+                <span class="tech-title" data-i18n="hero.float1Title">هندسة متطورة</span>
+                <span class="tech-sub">Clean Architecture</span>
+              </div>
+            </div>
+
+            <div class="floating-tech-card float-card-2">
+              <div class="tech-icon-circle icon-pulse">⚡</div>
+              <div class="tech-text">
+                <span class="tech-title" data-i18n="hero.float2Title">أداء فائق</span>
+                <span class="tech-sub">High Speed &amp; Scale</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="services-section section-padding" id="services">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag" data-i18n="services.tag">ما نقدمه لعملائنا</span>
+          <h2 class="section-title" data-i18n="services.title">خدمات برمجية شاملة بأعلى معايير الدقة</h2>
+          <p class="section-desc" data-i18n="services.desc">نغطي كافة مراحل بناء المنتج الرقمي من التخطيط المعماري حتى
+            الإطلاق والتشغيل السحابي المستقر.</p>
+        </div>
+
+        <div class="services-grid">
+          <!-- Service Card 1 -->
+          <div class="service-card">
+            <div class="service-icon-box">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+            </div>
+            <h3 class="service-title" data-i18n="services.s1Title">تطوير مواقع وتطبيقات الويب</h3>
+            <p class="service-text" data-i18n="services.s1Text">
+              بناء منصات ومواقع ويب سريعة الاستجابة، لوحات تحكم ديناميكية، وتطبيقات ويب سحابية SaaS بأحدث أطر العمل
+              العالمية.
+            </p>
+            <div class="service-tags">
+              <span>Full-Stack</span>
+              <span>SPA &amp; SSR</span>
+              <span>APIs</span>
+            </div>
+          </div>
+
+          <!-- Service Card 2 -->
+          <div class="service-card">
+            <div class="service-icon-box">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+              </svg>
+            </div>
+            <h3 class="service-title" data-i18n="services.s2Title">تطبيقات الهواتف الذكية</h3>
+            <p class="service-text" data-i18n="services.s2Text">
+              تطوير تطبيقات أصلية ومتعددة المنصات لأنظمة iOS و Android بتجربة استخدام سلسة وأداء استثنائي يرقى لتطلعات
+              المستخدمين.
+            </p>
+            <div class="service-tags">
+              <span>iOS</span>
+              <span>Android</span>
+              <span>Cross-Platform</span>
+            </div>
+          </div>
+
+          <!-- Service Card 3 -->
+          <div class="service-card">
+            <div class="service-icon-box">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+              </svg>
+            </div>
+            <h3 class="service-title" data-i18n="services.s3Title">الأنظمة السحابية والباك إند</h3>
+            <p class="service-text" data-i18n="services.s3Text">
+              هندسة خوادم وبنى تحتية سحابية قابلة للتوسع اللامحدود، مع إدارة قواعد البيانات وواجهات البرمجة الآمنة
+              والفعالة.
+            </p>
+            <div class="service-tags">
+              <span>Cloud Microservices</span>
+              <span>Database</span>
+              <span>DevOps</span>
+            </div>
+          </div>
+
+          <!-- Service Card 4 -->
+          <div class="service-card">
+            <div class="service-icon-box">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+            </div>
+            <h3 class="service-title" data-i18n="services.s4Title">تصميم واجهات وتجربة المستخدم</h3>
+            <p class="service-text" data-i18n="services.s4Text">
+              دراسة سلوك المستخدم وتصميم واجهات UI/UX عصرية وأنيقة تضمن سهولة الاستخدام وترفع معدلات التحويل والتفاعل.
+            </p>
+            <div class="service-tags">
+              <span>UI/UX</span>
+              <span>Design Systems</span>
+              <span>Interactive Prototyping</span>
+            </div>
+          </div>
+
+          <!-- Service Card 5 -->
+          <div class="service-card">
+            <div class="service-icon-box">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path
+                  d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                </path>
+              </svg>
+            </div>
+            <h3 class="service-title" data-i18n="services.s5Title">حلول الذكاء الاصطناعي والأتمتة</h3>
+            <p class="service-text" data-i18n="services.s5Text">
+              دمج تقنيات الذكاء الاصطناعي التوليدي، الشات بوت المخصص، وأتمتة مسارات العمل لتقليل التكاليف ورفع
+              الإنتاجية.
+            </p>
+            <div class="service-tags">
+              <span>AI Integration</span>
+              <span>Automation</span>
+              <span>Smart Workflows</span>
+            </div>
+          </div>
+
+          <!-- Service Card 6 -->
+          <div class="service-card">
+            <div class="service-icon-box">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <h3 class="service-title" data-i18n="services.s6Title">الأمان السيبراني والصيانة الفنية</h3>
+            <p class="service-text" data-i18n="services.s6Text">
+              فحص الثغرات وتأمين الأنظمة وتشفير البيانات، مع خطط صيانة وتحديث دورية تضمن استمرارية أعمالك بدون توقف.
+            </p>
+            <div class="service-tags">
+              <span>Security</span>
+              <span>Code Audits</span>
+              <span>24/7 Monitoring</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM SECTION -->
+    <section class="team-section section-padding" id="team">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag" data-i18n="team.tag">فريق العمل</span>
+          <h2 class="section-title" data-i18n="team.title">فريق DEVORA</h2>
+          <p class="section-desc" data-i18n="team.desc">نخبة من المطورين والمهندسين الشغوفين ببناء حلول برمجية استثنائية وعصرية.</p>
+        </div>
+
+        <div class="team-grid">
+          <!-- Team Member Card: Fares -->
+          <div class="team-card">
+            <div class="team-card-ambient"></div>
+            
+            <div class="team-card-badge-top">
+              <span class="team-status-pill"><span class="pulse-dot"></span> Available for Projects</span>
+            </div>
+
+            <div class="team-avatar-wrapper">
+              <div class="team-avatar-ring">
+                <img src="assets/fares.jpg" alt="Fares - Web & Mobile App Developer" class="team-avatar-img" loading="lazy">
+              </div>
+            </div>
+
+            <div class="team-info">
+              <span class="team-role-badge" data-i18n="team.faresRole">Web & Mobile App Developer</span>
+              <h3 class="team-name" data-i18n="team.faresName">Fares</h3>
+              <p class="team-role-desc" data-i18n="team.faresBio">
+                مطور واجهات وتطبيقات متكاملة بخبرة عالية في تحويل الأفكار إلى حلول رقمية احترافية سريعة وجذابة.
+              </p>
+
+              <!-- Technical Skills -->
+              <div class="team-skills-container">
+                <div class="team-skills">
+                  <span class="skill-tag">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                      <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                      <polyline points="2 17 12 22 22 17"></polyline>
+                      <polyline points="2 12 12 17 22 12"></polyline>
+                    </svg>
+                    Web Development
+                  </span>
+                  <span class="skill-tag">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                      <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                    </svg>
+                    Mobile APP Development
+                  </span>
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="team-card-actions">
+                <a href="https://portfoliofares40.vercel.app/" target="_blank" rel="noopener noreferrer"
+                  class="team-btn btn-portfolio" id="team-view-portfolio-btn" aria-label="Veiw Portfolio">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                  <span data-i18n="team.viewPortfolio">Veiw Portfolio</span>
+                </a>
+
+                <a href="https://wa.me/201040606031" target="_blank" rel="noopener noreferrer"
+                  class="team-btn btn-contact" id="team-contact-btn" aria-label="Contact him: 01040606031"
+                  title="Contact: 01040606031">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                  </svg>
+                  <span data-i18n="team.contactHim">Contact him</span>
+                </a>
+              </div>
+
+              <!-- Quick direct call fallback / number display -->
+              <div class="team-phone-badge">
+                <a href="tel:01040606031" class="team-phone-link" title="Call directly: 01040606031">
+                  <span class="phone-icon-mini">📞</span>
+                  <span dir="ltr">01040606031</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Team Member Card: Ziad Mohamed -->
+          <div class="team-card">
+            <div class="team-card-ambient"></div>
+            
+            <div class="team-card-badge-top">
+              <span class="team-status-pill"><span class="pulse-dot"></span> Available for Projects</span>
+            </div>
+
+            <div class="team-avatar-wrapper">
+              <div class="team-avatar-ring">
+                <img src="assets/ziad.jpg" alt="Ziad Mohamed - Web & Backend Developer" class="team-avatar-img avatar-focus-top" loading="lazy">
+              </div>
+            </div>
+
+            <div class="team-info">
+              <span class="team-role-badge" data-i18n="team.ziadRole">Web & Backend Developer</span>
+              <h3 class="team-name" data-i18n="team.ziadName">Ziad Mohamed</h3>
+              <p class="team-role-desc" data-i18n="team.ziadBio">
+                مطور مواقع وأنظمة خلفية (Backend) متخصص في بناء خوادم سريعة وقواعد بيانات آمنة وواجهات برمجية متطورة.
+              </p>
+
+              <!-- Technical Skills -->
+              <div class="team-skills-container">
+                <div class="team-skills">
+                  <span class="skill-tag">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                      <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                      <polyline points="2 17 12 22 22 17"></polyline>
+                      <polyline points="2 12 12 17 22 12"></polyline>
+                    </svg>
+                    Web Developer
+                  </span>
+                  <span class="skill-tag">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                      <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                      <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                      <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                    </svg>
+                    Back End
+                  </span>
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="team-card-actions">
+                <a href="https://wa.me/201203844860" target="_blank" rel="noopener noreferrer"
+                  class="team-btn btn-contact btn-contact-glow" id="team-ziad-contact-btn" aria-label="Contact him: 01203844860"
+                  title="Contact: 01203844860">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                  </svg>
+                  <span data-i18n="team.contactHim">Contact him</span>
+                </a>
+              </div>
+
+              <!-- Quick direct call fallback / number display -->
+              <div class="team-phone-badge">
+                <a href="tel:01203844860" class="team-phone-link" title="Call directly: 01203844860">
+                  <span class="phone-icon-mini">📞</span>
+                  <span dir="ltr">01203844860</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOCIAL MEDIA SECTION (Dedicated for Instagram & TikTok ONLY as requested) -->
+    <section class="social-section section-padding" id="social">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag" data-i18n="social.tag">تابع مجتمعنا الرقمي</span>
+          <h2 class="section-title" data-i18n="social.title">DEVORA على السوشيال ميديا</h2>
+          <p class="section-desc" data-i18n="social.desc">
+            تابع كواليس البرمجة، شروحات التقنية، وأحدث إطلاقات مشاريعنا عبر قنواتنا الرسمية على انستجرام وتيك توك.
+          </p>
+        </div>
+
+        <div class="social-cards-grid">
+          <!-- Instagram Hub Card -->
+          <div class="social-hub-card card-instagram">
+            <div class="social-card-ambient"></div>
+            <div class="social-card-header">
+              <div class="social-brand-icon ig-gradient">
+                <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </div>
+              <div class="social-handle-info">
+                <span class="social-platform-name">Instagram</span>
+                <span class="social-handle">@devoraa0</span>
+              </div>
+            </div>
+
+            <p class="social-card-desc" data-i18n="social.igDesc">
+              تصاميم واجهات رقمية، نصائح في هندسة البرمجيات، وتغطيات حصرية لأحدث أعمالنا وتقنياتنا.
+            </p>
+
+            <div class="social-highlights">
+              <div class="highlight-item">
+                <span class="hl-badge">📸 بوستات تقنية</span>
+              </div>
+              <div class="highlight-item">
+                <span class="hl-badge">💡 نصائح برمجية</span>
+              </div>
+              <div class="highlight-item">
+                <span class="hl-badge">🚀 إطلاقات ومشاريع</span>
+              </div>
+            </div>
+
+            <a href="https://www.instagram.com/devoraa0?stkn=MWt5OW5hZ21jM3M5NA==" target="_blank"
+              rel="noopener noreferrer" class="btn-social btn-ig" data-i18n="social.igFollow">
+              <span>متابعة على Instagram</span>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+
+          <!-- TikTok Hub Card -->
+          <div class="social-hub-card card-tiktok">
+            <div class="social-card-ambient"></div>
+            <div class="social-card-header">
+              <div class="social-brand-icon tt-gradient">
+                <svg viewBox="0 0 24 24" width="34" height="34" fill="currentColor">
+                  <path
+                    d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-1.01-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+                </svg>
+              </div>
+              <div class="social-handle-info">
+                <span class="social-platform-name">TikTok</span>
+                <span class="social-handle">@devora_063</span>
+              </div>
+            </div>
+
+            <p class="social-card-desc" data-i18n="social.ttDesc">
+              فيديوهات قصيرة وممتعة عن كواليس المبرمجين، حلول برمجية سريعة، وأحدث تريندات الذكاء الاصطناعي.
+            </p>
+
+            <div class="social-highlights">
+              <div class="highlight-item">
+                <span class="hl-badge">🎬 كواليس البرمجة</span>
+              </div>
+              <div class="highlight-item">
+                <span class="hl-badge">⚡ شروحات سريعة</span>
+              </div>
+              <div class="highlight-item">
+                <span class="hl-badge">🤖 أدوات وتقنيات ذكية</span>
+              </div>
+            </div>
+
+            <a href="https://www.tiktok.com/@devora_063?_r=1&amp;_t=ZS-9ADsvjYCFhE" target="_blank"
+              rel="noopener noreferrer" class="btn-social btn-tt" data-i18n="social.ttFollow">
+              <span>متابعة على TikTok</span>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact-section section-padding" id="contact">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag" data-i18n="contact.tag">ابدأ رحلتك التقنية</span>
+          <h2 class="section-title" data-i18n="contact.title">تواصل مع خبراء DEVORA</h2>
+          <p class="section-desc" data-i18n="contact.desc">سواء كان لديك فكرة مشروع جديد أو ترغب في تطوير نظامك الحالي،
+            نحن جاهزون للاستماع ومساعدتك فوراً.</p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Info Column -->
+          <div class="contact-info-col">
+            <!-- Direct WhatsApp & Phone Card -->
+            <a href="https://wa.me/201040606031" target="_blank" rel="noopener noreferrer"
+              class="info-card info-card-link">
+              <div class="info-icon glow-whatsapp-box">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                  <path
+                    d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm0 18.08c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.106 8.106 0 0 1-1.24-4.32c0-4.5 3.66-8.16 8.16-8.16 2.18 0 4.23.85 5.77 2.39a8.106 8.106 0 0 1 2.39 5.77c0 4.5-3.66 8.17-8.16 8.17zm4.47-6.11c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.53.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.16 0-.43.06-.66.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.12.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.17 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.47-.29z" />
+                </svg>
+              </div>
+              <div class="info-content">
+                <h4 data-i18n="contact.phoneTitle">الهاتف / واتساب المباشر</h4>
+                <p dir="ltr" class="contact-phone-number">01040606031</p>
+                <span class="info-sub" data-i18n="contact.phoneSub">متاح للرد والتواصل الفوري على مدار الساعة</span>
+              </div>
+            </a>
+
+            <a href="mailto:devoracompany100@gmail.com" class="info-card info-card-link">
+              <div class="info-icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </div>
+              <div class="info-content">
+                <h4 data-i18n="contact.emailTitle">البريد الإلكتروني</h4>
+                <p dir="ltr" class="contact-email-val">devoracompany100@gmail.com</p>
+                <span class="info-sub" data-i18n="contact.emailSub">نرد خلال 12 ساعة كحد أقصى</span>
+              </div>
+            </a>
+
+            <!-- Social Connect with Instagram & TikTok -->
+            <div class="info-card social-connect-card">
+              <div class="info-icon glow-cyan-box">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                  <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                </svg>
+              </div>
+              <div class="info-content">
+                <h4 data-i18n="contact.socialTitle">حسابات التواصل الرسمية</h4>
+                <p data-i18n="contact.socialSub">تابعنا وتواصل مباشرة عبر المنصات:</p>
+                <div class="contact-social-links">
+                  <a href="https://www.instagram.com/devoraa0?stkn=MWt5OW5hZ21jM3M5NA==" target="_blank"
+                    rel="noopener noreferrer" class="contact-social-btn">
+                    <span>Instagram (@devoraa0)</span>
+                  </a>
+                  <a href="https://www.tiktok.com/@devora_063?_r=1&amp;_t=ZS-9ADsvjYCFhE" target="_blank"
+                    rel="noopener noreferrer" class="contact-social-btn">
+                    <span>TikTok (@devora_063)</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form Column -->
+          <div class="contact-form-col">
+            <form id="contact-form" class="contact-form glass-card">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name" class="form-label" data-i18n="contact.nameLabel">الاسم بالكامل *</label>
+                  <input type="text" id="name" name="name" required placeholder="مثال: أحمد عبد الله"
+                    class="form-input">
+                </div>
+                <div class="form-group">
+                  <label for="email" class="form-label" data-i18n="contact.emailLabel">البريد الإلكتروني *</label>
+                  <input type="email" id="email" name="email" required placeholder="name@company.com"
+                    class="form-input">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="phone" class="form-label" data-i18n="contact.phoneLabel">رقم الهاتف / واتساب</label>
+                  <input type="tel" id="phone" name="phone" placeholder="+966 50 000 0000" class="form-input">
+                </div>
+                <div class="form-group">
+                  <label for="service-select" class="form-label" data-i18n="contact.serviceLabel">نوع الخدمة
+                    المطلوبة</label>
+                  <select id="service-select" name="service" class="form-input form-select">
+                    <option value="web">تطوير موقع أو تطبيق ويب</option>
+                    <option value="mobile">تطبيقات الهواتف الذكية</option>
+                    <option value="cloud">أنظمة سحابية وواجهات API</option>
+                    <option value="uiux">تصميم واجهات وتجربة مستخدم UI/UX</option>
+                    <option value="ai">حلول الذكاء الاصطناعي والأتمتة</option>
+                    <option value="other">استشارة برمجية عامة</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="message" class="form-label" data-i18n="contact.messageLabel">تفاصيل فكرة المشروع أو
+                  الاستفسار *</label>
+                <textarea id="message" name="message" rows="4" required
+                  placeholder="اكتب نبذة عن متطلبات المشروع، أهدافه، والجدول الزمني المرغوب..."
+                  class="form-input form-textarea"></textarea>
+              </div>
+
+              <button type="submit" class="btn-primary w-full submit-btn" id="submit-btn">
+                <span class="btn-text" data-i18n="contact.submitBtn">إرسال الرسالة إلى DEVORA</span>
+                <span class="btn-spinner" aria-hidden="true"></span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="brand-logo">
+            <div class="logo-gem">
+              <svg viewBox="0 0 48 48" class="logo-svg" fill="none">
+                <polygon points="12,6 30,6 40,24 30,42 12,42 6,24" stroke="url(#cyan-violet-grad)" stroke-width="2.5"
+                  fill="rgba(16, 24, 48, 0.8)" />
+                <text x="24" y="27" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="700"
+                  fill="#00f0ff" text-anchor="middle">&lt;/&gt;</text>
+              </svg>
+            </div>
+            <span class="brand-name">DEVORA</span>
+          </div>
+          <p class="footer-tagline" data-i18n="footer.about">
+            شركة برمجيات رائدة متخصصة في هندسة التطبيقات الحديثة والحلول الرقمية الفائقة بألوان المستقبل.
+          </p>
+        </div>
+
+        <div class="footer-links-col">
+          <h4 class="footer-heading" data-i18n="footer.quickLinks">روابط سريعة</h4>
+          <ul class="footer-nav">
+            <li><a href="#hero" data-i18n="nav.home">الرئيسية</a></li>
+            <li><a href="#services" data-i18n="nav.services">خدماتنا</a></li>
+            <li><a href="#team" data-i18n="nav.team">فريق العمل</a></li>
+            <li><a href="#social" data-i18n="nav.social">السوشيال ميديا</a></li>
+            <li><a href="#contact" data-i18n="nav.contact">تواصل معنا</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-col">
+          <h4 class="footer-heading" data-i18n="footer.socialHeading">قنوات التواصل</h4>
+          <p class="footer-social-intro" data-i18n="footer.socialIntro">تابعنا مباشرة على وسائل التواصل الاجتماعي
+            المعتمدة:</p>
+          <div class="footer-social-list">
+            <a href="https://www.instagram.com/devoraa0?stkn=MWt5OW5hZ21jM3M5NA==" target="_blank"
+              rel="noopener noreferrer" class="footer-social-badge ig-badge">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+              <span>Instagram</span>
+            </a>
+            <a href="https://www.tiktok.com/@devora_063?_r=1&amp;_t=ZS-9ADsvjYCFhE" target="_blank"
+              rel="noopener noreferrer" class="footer-social-badge tt-badge">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                <path
+                  d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-1.01-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+              </svg>
+              <span>TikTok</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="copyright" data-i18n="footer.rights">© 2026 DEVORA. جميع الحقوق محفوظة | هندسة برمجية متطورة</p>
+        <div class="footer-meta">
+          <span class="status-indicator"></span>
+          <span>DEVORA Core Systems Active</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Quick Button -->
+  <a href="https://wa.me/201040606031" target="_blank" rel="noopener noreferrer" class="floating-whatsapp-btn"
+    id="floating-whatsapp-btn" aria-label="تواصل عبر واتساب - 01040606031">
+    <span class="wa-radar-wave"></span>
+    <span class="wa-radar-wave wave-2"></span>
+    <div class="wa-circle-btn">
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+        <path
+          d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm0 18.08c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.106 8.106 0 0 1-1.24-4.32c0-4.5 3.66-8.16 8.16-8.16 2.18 0 4.23.85 5.77 2.39a8.106 8.106 0 0 1 2.39 5.77c0 4.5-3.66 8.17-8.16 8.17zm4.47-6.11c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.53.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.16 0-.43.06-.66.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.12.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.17 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.47-.29z" />
+      </svg>
+    </div>
+    <div class="floating-wa-label">
+      <span class="label-head" data-i18n="contact.waQuickTitle">واتساب مباشر</span>
+      <span class="label-number">01040606031</span>
+    </div>
+  </a>
+
+  <!-- Modal / Toast Notification for Form Feedback -->
+  <div id="toast-modal" class="toast-modal" aria-hidden="true">
+    <div class="toast-content">
+      <div class="toast-icon">✓</div>
+      <div class="toast-text">
+        <h4 id="toast-title" data-i18n="contact.toastTitle">تم تجهيز رسالتك بنجاح!</h4>
+        <p id="toast-desc" data-i18n="contact.toastDesc">جارٍ فتح واتساب لإرسال رسالتك مباشرة إلى رقمنا 01040606031...
+        </p>
+        <a id="toast-wa-link" href="https://wa.me/201040606031" target="_blank" rel="noopener noreferrer"
+          class="toast-wa-btn" style="display: none;">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path
+              d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm0 18.08c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.106 8.106 0 0 1-1.24-4.32c0-4.5 3.66-8.16 8.16-8.16 2.18 0 4.23.85 5.77 2.39a8.106 8.106 0 0 1 2.39 5.77c0 4.5-3.66 8.17-8.16 8.17zm4.47-6.11c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.53.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.16 0-.43.06-.66.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.12.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.17 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.47-.29z" />
+          </svg>
+          <span data-i18n="contact.toastWaBtn">فتح محادثة واتساب الآن</span>
+        </a>
+      </div>
+      <button type="button" class="toast-close" id="toast-close-btn">&times;</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
